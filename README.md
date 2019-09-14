@@ -7,9 +7,9 @@ In this project, I created a REST API using Express. The API provides a way for 
 
 In addition, the project requires users to create an account and log-in to make changes to the database.
 
-In a future project, this will be further expanded by using React to create a client for your REST API.
+In a future project, this will be further expanded by using React to create a client for the REST API.
 
-To complete this project, you’ll use your knowledge of REST API design, Node.js, and Express to create API routes, along with the Sequelize ORM for data modeling, validation, and persistence. To test your application, you'll use Postman, a popular application for exploring and testing REST APIs.
+To complete this project, I made use of REST API design principles, Node.js, and Express to create API routes, along with the Sequelize ORM for data modeling, validation, and persistence.
 
 Some of the technologies used to create this project are:
 
