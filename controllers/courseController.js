@@ -3,14 +3,17 @@ const User = require('../db/models/user');
 const controllerResponse = require('../utils/controllerResponse');
 
 exports.addCourse = async (userId, title, description, estimatedTime, materialsNeeded) => {
-    await Course.create({
+    const course = await Course.create({
         userId,
         title,
         description,
         estimatedTime,
         materialsNeeded
     });
-    return new controllerResponse(201);
+
+    let controllerRes = new controllerResponse(201);
+    controllerRes.setLocation(`/api/courses/${course.id}`);
+    return controllerRes;
 }
 
 exports.getCourse = async (courseId) => {
@@ -22,8 +25,8 @@ exports.getCourse = async (courseId) => {
 exports.getCourses = async () => {
     const courses = await Course.findAndCountAll({
         attributes: {
-            include: ['id', 'title', 'description', 'estimatedTime', 'materialsNeeded'],
-            exclude: ['userId','createdAt','updatedAt']
+            include: ['id', 'userId', 'title', 'description', 'estimatedTime', 'materialsNeeded'],
+            exclude: ['createdAt','updatedAt']
         }
     });
     return new controllerResponse(200, courses);
