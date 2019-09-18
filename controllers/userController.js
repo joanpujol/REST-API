@@ -6,9 +6,7 @@ const isValidEmail = require('../utils/isValidEmail');
 
 exports.getCurrentlyAuthenticatedUser = (authenticatedUser) => {
     const { id, firstName, lastName, emailAddress } = authenticatedUser;
-    let controllerResponse = new controllerResponse(200, { id, firstName, lastName, emailAddress });
-    controllerResponse.setLocation("/");
-    return controllerResponse;
+    return new controllerResponse(200, { id, firstName, lastName, emailAddress });
 }
 
 exports.addUser = async (firstName, lastName, emailAddress, password) => {
@@ -38,5 +36,7 @@ exports.addUser = async (firstName, lastName, emailAddress, password) => {
         password
     });
     
-    return new controllerResponse(201);
+    let controllerResp = new controllerResponse(201);
+    controllerResp.setLocation("/");
+    return controllerResp;
 }
